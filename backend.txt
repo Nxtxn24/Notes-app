@@ -1,9 +1,0 @@
-Backend used for this app is FastAPI
-
-dependencies:
-
-FastAPI
-unicorn
-
-
-database: SQLite packages: sqlalchemy
