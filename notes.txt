@@ -1,1 +1,3 @@
-Git is a version control system
+Git is a version control system.
+It is very powerful
+This is in main branch
