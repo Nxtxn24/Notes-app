@@ -1,7 +1,3 @@
-<<<<<<< HEAD
 Git is a version control system
 Adding few lines.
-=======
-Git is a version control system.
-Adding few lines.
->>>>>>> master
+Making new changes with new branch
