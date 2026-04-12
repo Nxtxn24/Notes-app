@@ -15,6 +15,9 @@ def get_db():
     finally:
         db.close()
 
+@app.get("/")
+def root():
+    return "API is running, please go to swagger UI"
 # Create Note
 @app.post("/notes/")
 def create_note(title: str, content: str, db: Session = Depends(get_db)):
