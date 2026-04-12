@@ -4,12 +4,13 @@ import models
 from database import engine, SessionLocal
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
+app.mount("/assets", StaticFiles(directory="assets"), name="assets")
 
 app.add_middleware(
     CORSMiddleware,
@@ -27,8 +28,8 @@ def get_db():
         db.close()
 
 @app.get("/")
-def root():
-    return "API is running, please go to swagger UI"
+def home():
+    return FileResponse("frontend/index.html")
 # Create Note
 @app.post("/notes/")
 def create_note(title: str, content: str, db: Session = Depends(get_db)):
