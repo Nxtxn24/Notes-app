@@ -1,2 +1,3 @@
 env/
-backend/notes.db
+notes.db
+__pycache__

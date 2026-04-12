@@ -1,0 +1,26 @@
+body {
+    font-family: Arial;
+    max-width: 600px;
+    margin: auto;
+}
+
+.form {
+    margin-bottom: 20px;
+}
+
+input, textarea {
+    width: 100%;
+    margin: 5px 0;
+    padding: 8px;
+}
+
+button {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.note {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}

@@ -1,29 +1,23 @@
-alert("JS is working");
+const API = "http://127.0.0.1:8000";
 
-const API_URL = "http://127.0.0.1:8000";
-
-window.onload = getNotes;
-
-async function getNotes() {
-    const res = await fetch(`${API_URL}/notes`);
+async function fetchNotes() {
+    const res = await fetch(`${API}/notes/`);
     const data = await res.json();
 
-    console.log(data);
-
-    const notesDiv = document.getElementById("notes");
-    notesDiv.innerHTML = "";
+    const container = document.getElementById("notes");
+    container.innerHTML = "";
 
     data.forEach(note => {
         const div = document.createElement("div");
         div.className = "note";
 
         div.innerHTML = `
-        <h3>${note.title}</h3>
-        <p>${note.content}</p>
-        <button onclick="deleteNote(${note.id})">Delete</button>
+            <h3>${note.title}</h3>
+            <p>${note.content}</p>
+            <button onclick="deleteNote(${note.id})">Delete</button>
         `;
 
-        notesDiv.appendChild(div);
+        container.appendChild(div);
     });
 }
 
@@ -31,21 +25,19 @@ async function addNote() {
     const title = document.getElementById("title").value;
     const content = document.getElementById("content").value;
 
-    await fetch(`${API_URL}/notes`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ title, content })
+    await fetch(`${API}/notes/?title=${title}&content=${content}`, {
+        method: "POST"
     });
 
-    getNotes();
+    fetchNotes();
 }
 
 async function deleteNote(id) {
-    await fetch(`${API_URL}/notes/${id}`, {
+    await fetch(`${API}/notes/${id}`, {
         method: "DELETE"
     });
 
-    getNotes();
+    fetchNotes();
 }
+
+fetchNotes();
