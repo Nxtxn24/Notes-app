@@ -1,3 +1,4 @@
 env/
 notes.db
+.env
 __pycache__
