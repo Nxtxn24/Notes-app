@@ -2,7 +2,7 @@ name: Docker CI
 
 on:
   push:
-    branches: ["main"]
+    branches: ["master"]
   pull_request:
 
 jobs:
@@ -28,6 +28,6 @@ jobs:
 
       - name: Test API
         run: docker compose exec -T fastapi pytest
-        
+
       - name: Stop containers
         run: docker compose down
