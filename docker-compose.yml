@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  fastapi:
+    build: .
+    container_name: notesapp
+    ports:
+      - "8000:8000"
+    restart: always
+
+    volumes:
+      - ./data:/app/data  
+
+    environment:
+      - DATABASE_URL=sqlite:///./data/notes.db
